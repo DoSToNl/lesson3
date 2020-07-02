@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="RU">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div class="wrapper" id="app">
+		<button @click="add">Кнопка</button>
+		<p>{{randomWords}}</p>
+	</div>
+	<script>
+		var app = new Vue({
+			el: '#app',
+			data: {
+				randomWords: '',
+				words: [
+					['BMW - ','MERCEDES - ','BENTLEY - '],
+					['Цвет: Черный ','Цвет: Красный ','Цвет: Белый '],
+					['Номер 777 ','Номер 111 ','Номер 001 '],
+					['Новый ','Старый ','Битый ']
+				]
+			},
+			methods: {
+				add: function() {
+					let generate = '';
+
+					for(item in this.words){
+						let rand = Math.floor(Math.random() * this.words[item].length);
+							generate += '' + this.words[item][rand]
+					}
+					this.randomWords = generate;
+				}
+			}
+		})
+	</script>
+</body>
+</html>
